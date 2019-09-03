@@ -1,5 +1,5 @@
 from random import shuffle #mods verstehen
-with open("D:\isaac\Programmierung\Python Übungen\Python_uebungen\Superlatives.txt") as infile:
+with open("C:\Users\heike\Desktop\VS-Repository\Python_uebungen\Superlatives.txt") as infile:
     txt = [line.strip() for line in infile] #das muss ich noch verstehen "with as" befehl und "for in"
 shuffle(txt)
 
@@ -13,4 +13,6 @@ for strophe in range(4):
     el2 = txt.pop()
     print(("{} SPAM, {} SPAM".format(el1, el2)).upper()) #"{}" sind Platzhalter
     print()
+
+
  
