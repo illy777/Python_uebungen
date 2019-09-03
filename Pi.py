@@ -1,4 +1,5 @@
 import turtle as tu
+import math
 
 lines = 1_000000
 
@@ -24,17 +25,21 @@ for n in range(lines): #schritt der wiederholung =n
     if 235 < g < 200:
         r = 0  
     else:
-        if color < 247:
+        if color < 240:
             r = 255
         else:
-            r= 255 - color
+            for x in range(15):
+                a = (math.log(x+2)/2.08) 
+                r = int(255 * 1/a/4)
     
     tu.pencolor(r, g, b)
+
+
     zahl = int(pi[n])
-    r = zahl * 36
-    tu.setheading(r)
+    rot = zahl * 36
+    tu.setheading(rot)
     tu.forward(1)
-    if n % 10_000 == 0:
+    if n % 100_000 == 0:
         tu.update()
 
 
