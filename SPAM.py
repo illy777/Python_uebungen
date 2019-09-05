@@ -1,5 +1,5 @@
 from random import shuffle #mods verstehen
-with open("C:\Users\heike\Desktop\VS-Repository\Python_uebungen\Superlatives.txt") as infile:
+with open("C:\Users\heike\Desktop\VS-Repository\Python_uebungen\Superlatives.txt", "r") as infile:
     txt = [line.strip() for line in infile] #das muss ich noch verstehen "with as" befehl und "for in"
 shuffle(txt)
 
