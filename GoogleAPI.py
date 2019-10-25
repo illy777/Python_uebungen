@@ -6,14 +6,15 @@ import os
 
 if os.path.exists(CredentialsGoogle) is True:
     b = input("Dein Key ist immernoch der Gleiche, möchtest du ihn ändern? J/N: ")
-        if b = "J"
-            New_API = input("Bitte gib neuen API_Key ein: ")
-            with open(CredentialsGoogle, 'w') as f:
-            f.write("API_Key =" New_API)
-            f.close()
-            print("Der Key wurde geändert")
-        else:
-            print("Ok")  
+    if b = "J"
+        New_API = input("Bitte gib neuen API_Key ein: ")
+        with open(CredentialsGoogle, 'w') as f:
+        f.write("API_Key =" New_API)
+        f.close()
+        print("Der Key wurde geändert")
+     else:
+        print("Ok")  
+        
 else:
     b = input("Bitte gib einen gültigen API_Key ein: ")
     with open(CredentialsGoogle, 'w') as f:
