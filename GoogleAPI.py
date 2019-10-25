@@ -10,18 +10,35 @@ table = [["Name","Adresse","Telefon","Bewertung"]]
 
 search = input("Bitte Stichwort für Ortssuche eingeben: ")
 digit = search.replace(' ', '%20') 
+n = input("Bitte Anzahl der Seiten angeben, die geladen werden sollen(20 Ergebnisse/Seite): ")
+n = (n-1)
 find_places = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+digit+"&key="+APIKey
 url_json = urllib.request.urlopen(find_places)
 jsonf = json.load(url_json)
 for place in jsonf['results']: 
     place_id = place['place_id']
-    details = "https://maps.googleapis.com/maps/api/place/details/json?place_id="+place_id+"&fields=formatted_phone_number,website,opening_hours&key="+APIKey
+    details = "https://maps.googleapis.com/maps/api/place/details/json?place_id="+place_id+\
+    "&fields=formatted_phone_number,website,opening_hours&key="+APIKey
     url_json2 = urllib.request.urlopen(details)
     jsondetails = json.load(url_json2)
     dir_details = jsondetails['result']
     table.append([place['name'], place['formatted_address'], dir_details['formatted_phone_number'], str(place['rating'])])
          #dir_details['website'], dir_details['opening_hours']['weekday_text'][0]])
-
+if (n>0):
+    for x in range(n):
+        find_more_places = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+digit+"&key="+APIKey+\
+           "&next_page_token="jsonf['next_page_token']
+        url_json = urllib.request.urlopen(find_more_places)
+        jsonf = json.load(url_json)
+        for place in jsonf['results']: 
+        place_id = place['place_id']
+        details = "https://maps.googleapis.com/maps/api/place/details/json?place_id="+place_id+\
+        "&fields=formatted_phone_number,website,opening_hours&key="+APIKey
+        url_json2 = urllib.request.urlopen(details)
+        jsondetails = json.load(url_json2)
+        dir_details = jsondetails['result']
+        table.append([place['name'], place['formatted_address'], dir_details['formatted_phone_number'], str(place['rating'])])
+         #dir_details['website'], dir_details['opening_hours']['weekday_text'][0]])
 
 
 file_name = "Test.csv"
